@@ -13,12 +13,13 @@ namespace MoneyParserUA.Core.Model
             //       .Where(item => item.ClassName != null && 
             //       item.ClassName.Contains("mfm-text-nowrap"));
 
-            var items = document.QuerySelectorAll("td[data-title='Готівковий ринок']");
+            var bankPrices = document.QuerySelectorAll("td[data-title='Готівковий ринок']");
 
-            foreach (var item in items)
+            foreach (var item in bankPrices)
             {
                 list.Add((string)item.TextContent);
             }
+
             return list.ToArray();                               
         }
     }

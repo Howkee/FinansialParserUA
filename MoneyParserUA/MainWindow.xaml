@@ -5,69 +5,75 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MoneyParserUA"
         mc:Ignorable="d"
-        Title="Курс валют" Height="450" Width="820">
+        Title="Курс валют" Height="310" Width="800" ResizeMode="NoResize">
     <Grid x:Name="RootGrid" Background="WhiteSmoke">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
-            <RowDefinition Height="70" />
-            <RowDefinition Height="70" />
-            <RowDefinition Height="70" />
-            <RowDefinition Height="70" />
-            <RowDefinition Height="70" />
+            <RowDefinition Height="1.5*" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+        <Border Grid.Column="0" Grid.ColumnSpan="4" Background="DarkGray" />
+        <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="6" Background="LightGray" />
+        <Border Grid.Row="1" Grid.Column="3" Grid.RowSpan="6" Background="LightGray" />
+
         <StackPanel x:Name="Headers" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal"
-                    HorizontalAlignment="Center" Margin="0,15,0,0">
-            <TextBlock TextAlignment="Center" FontWeight="SemiBold" Text="Валюта"  FontSize="25" Width="200"/>
-            <TextBlock TextAlignment="Center" FontWeight="SemiBold" Text="Купівля/продаж"  FontSize="25" Width="200"/>
-            <TextBlock TextAlignment="Center" FontWeight="SemiBold" Text="НБУ"  FontSize="25"  Width="200"/>
-            <TextBlock TextAlignment="Center" FontWeight="SemiBold" Text="Чорний ринок"  FontSize="25" Width="200"/>
+                      Grid.RowSpan="1">
+            <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Text="Валюта"  FontSize="20" Width="200"/>
+            <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Text="Купівля/продаж"  FontSize="20" Width="200"/>
+            <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Text="НБУ"  FontSize="20"  Width="200"/>
+            <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Text="Чорний ринок"  FontSize="20" Width="200"/>
         </StackPanel>
 
-        <StackPanel x:Name="Currency" Grid.Column="0" Grid.Row="1" Grid.RowSpan="5"
-                   HorizontalAlignment="Left">
-            <Label Content="ДОЛЛАР" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center"
-               Margin="15" FontSize="20"/>
-            <Label  Content="ЄВРО" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center"
-               Margin="15" FontSize="20"/>
-            <Label  Content="РУБЛЬ" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center"
-               Margin="15" FontSize="20"/>
-            <Label  Content="ЗЛОТИЙ" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center"
-               Margin="15" FontSize="20"/>
-            <Label  Content="ФУНТ" HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center"
-               Margin="15" FontSize="20"/>
-        </StackPanel>
-        <StackPanel x:Name="BuyingSelling" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5"
-                   HorizontalAlignment="Center">
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25" />
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25"/>
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25"/>
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25"/>
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25"/>
-        </StackPanel>
-        <StackPanel x:Name="NBY" Grid.Column="2" Grid.Row="1" Grid.RowSpan="5"
-                   HorizontalAlignment="Center">
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25" />
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25"/>
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25"/>
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25"/>
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25"/>
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" Margin="15,0,0,0">
+            <Label Content="ДОЛЛАР" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" />
+            <Label Content="ЄВРО" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" />
+            <Label Content="РУБЛЬ" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20"/>
+            <Label Content="ЗЛОТИЙ" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20"/>
+            <Label Content="ФУНТ" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20"/>
+            <Label Content="ФРАНК" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20"/>
+
         </StackPanel>
 
-        <StackPanel x:Name="BlackMarket" Grid.Column="3" Grid.Row="1" Grid.RowSpan="5"
-                   HorizontalAlignment="Center">
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25" />
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25"/>
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25"/>
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25"/>
-            <TextBlock TextWrapping="Wrap" Text="0" FontSize="15" Margin="0,22,0,25"/>
+        <StackPanel x:Name="BuyingSelling" Grid.Column="1" Grid.Row="1" Grid.RowSpan="6"
+                    VerticalAlignment="Center"  HorizontalAlignment="Center">
+            <TextBlock TextWrapping="Wrap" FontSize="20" Text="0" Margin="0,5,0,5" />
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5" />
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5"/>
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5"/>
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5"/>
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5"/>
+        </StackPanel>
+
+        <StackPanel x:Name="NBY" Grid.Column="2" Grid.Row="1" Grid.RowSpan="6"
+                   HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock TextWrapping="Wrap" FontSize="20" Text="0" Margin="0,5,0,5" />
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5" />
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5"/>
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5"/>
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5"/>
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5"/>
+        </StackPanel>
+
+        <StackPanel x:Name="BlackMarket" Grid.Column="3" Grid.Row="1" Grid.RowSpan="6"
+                   HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock TextWrapping="Wrap" FontSize="20" Text="0" Margin="0,5,0,5" />
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5" />
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5"/>
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5"/>
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5"/>
+            <TextBlock TextWrapping="Wrap" Text="0" FontSize="20" Margin="0,5,0,5"/>
         </StackPanel>
     </Grid>
 </Window>

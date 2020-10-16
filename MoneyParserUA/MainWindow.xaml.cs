@@ -8,20 +8,20 @@ namespace MoneyParserUA
 {
     public partial class MainWindow : Window
     {
-        ParserWorker<string[]> bankPriceParser;
-        ParserWorker<string[]> NBYPriceParser;
-        ParserWorker<string[]> blackMarketParser;
-
         ParserSettings parserSettings = new ParserSettings();
-
 
         public MainWindow()
         {
             InitializeComponent();
 
-            bankPriceParser = new ParserWorker<string[]>(new BankPriceParser(), parserSettings);
-            NBYPriceParser = new ParserWorker<string[]>(new NBYParser(), parserSettings);
-            blackMarketParser = new ParserWorker<string[]>(new BlackMarketParser(), parserSettings);
+            ParserWorker<string[]> bankPriceParser = new ParserWorker<string[]>
+                                (new BankPriceParser(), parserSettings);
+
+            ParserWorker<string[]> NBYPriceParser = new ParserWorker<string[]>
+                                (new NBYParser(), parserSettings);
+
+            ParserWorker<string[]> blackMarketParser = new ParserWorker<string[]>
+                                (new BlackMarketParser(), parserSettings);
 
             bankPriceParser.OnCompleted += BankPriseWrite;
             bankPriceParser.Work();
@@ -36,26 +36,12 @@ namespace MoneyParserUA
 
         private void BankPriseWrite(object arg1, string[] arg2)
         {
-            for (int i = 0; i < BuyingSelling.Children.Count; i++)
-            {
-                if (BuyingSelling.Children[i] is TextBlock)
-                {
-                    string[] value = arg2[i].Replace('\n', ' ').Trim().Split(' ');
-                    (BuyingSelling.Children[i] as TextBlock).Text = value[0] + " / " + value[value.Length - 1];
-                }
-            }
+            TextRewrite(BuyingSelling, arg2);
         }
 
         private void BlackMarketPriceWrite(object arg1, string[] arg2)
         {
-            for (int i = 0; i < BlackMarket.Children.Count; i++)
-            {
-                if (BlackMarket.Children[i] is TextBlock)
-                {
-                    string[] value = arg2[i].Replace('\n', ' ').Trim().Split(' ');
-                    (BlackMarket.Children[i] as TextBlock).Text = value[0] + " / " + value[value.Length - 1];
-                }
-            }
+            TextRewrite(BlackMarket, arg2);
         }
 
         private void NBYPriceWrite(object arg1, string[] arg2)
@@ -65,6 +51,18 @@ namespace MoneyParserUA
                 if (NBY.Children[i] is TextBlock)
                 {
                     (NBY.Children[i] as TextBlock).Text = arg2[i].Substring(0,9).Trim();
+                }
+            }
+        }
+            
+        private void TextRewrite(StackPanel stackPanel, string[] values)
+        {
+            for (int i = 0; i < stackPanel.Children.Count; i++)
+            {
+                if (stackPanel.Children[i] is TextBlock)
+                {
+                    string[] value = values[i].Replace('\n', ' ').Trim().Split(' ');
+                    (stackPanel.Children[i] as TextBlock).Text = value[0] + " / " + value[value.Length - 1];
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿using AngleSharp.Html.Dom;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace MoneyParserUA.Core.Model
